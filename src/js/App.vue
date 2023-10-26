@@ -1,7 +1,9 @@
   <script>
   import {store} from '../data/store';
   import {myFunction} from '../function/basicFunction';
-  import baseComponent from '../components/base-component.vue'
+  import Header from '../components/header.vue';
+  import Main from '../components/main.vue';
+  import Footer from '../components/footer.vue';
   export default {
     name:'App',
     data(){
@@ -9,7 +11,7 @@
         store,
       }
     },
-    components:{baseComponent},
+    components:{Header,Main,Footer},
     watch:{},
     methods:{},
     computed:{},
@@ -20,9 +22,11 @@
   </script>
 
 <template>
-  <div class="main_wrapper container debug2">
+  <div class="main_wrapper">
 
-    <baseComponent/>
+    <Header/>
+    <Main/>
+    <Footer/>
 
   </div>
 </template>

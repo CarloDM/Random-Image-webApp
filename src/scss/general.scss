@@ -1,8 +1,3 @@
-*{
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
-}
 
 .debug1{
   background-color: rgba(255, 0, 0, 0.248);
@@ -15,4 +10,47 @@
 .debug3{
   background-color: rgba(0, 0, 255, 0.248);
   border: 1px solid black;
+}
+// -------------------------------------------
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+.main_wrapper{
+
+}
+
+header {
+  height: 50px;
+  width: 100%;
+}
+
+main {
+  width: 100%;
+  height: calc(100vh - (50px + 60px));
+  overflow-y: scroll;
+}
+
+footer{
+  width: 100%;
+  height: 60px;
+}
+
+.my_container{
+  width: 99%;
+  max-width: 1600px;
+  margin:auto
+}
+
+@media screen and (min-width: 392px) {
+  .my_container{
+    width: 97%;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .my_container{
+    width: 90%;
+  }
 }
