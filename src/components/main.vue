@@ -17,8 +17,8 @@
   </script>
 
 <template>
-  <main class="debug2">
-    <div class="my_container debug1">
+  <main class="">
+    <div class="my_container">
 
       <MainSection/>
 

@@ -49,7 +49,7 @@
   </script>
 
 <template>
-  <div class="card_container debug3">
+  <div class="card_container">
 
     <div v-if="!(load)"
     class="loading"
@@ -88,6 +88,10 @@
 .card_img, .loading{
   height: 100%;
   object-fit: cover;
+  padding: 5px;
+  border-radius: 10px;
+  pointer-events: none;
+  user-select: none;
 }
 .ratioSquare{
   aspect-ratio: 1/1;
