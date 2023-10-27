@@ -93,17 +93,14 @@
   height: 400px;
   margin-top: 5px;
   overflow: hidden;
-  cursor:grab;
-
-  &:active{
-    cursor:grabbing;
-  }
 }
 
 .cards_container{
   overflow: hidden;
-
-  // box-shadow: inset 0px 0px 10px 10px $bg_black_80;
+  cursor:grab;
+  &:active{
+    cursor:grabbing;
+  }
 }
 
 .overlay{
