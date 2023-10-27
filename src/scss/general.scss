@@ -52,6 +52,12 @@ footer{
 }
 @media screen and (min-width: 1200px) {
   .my_container{
+    width: 95%;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .my_container{
     width: 90%;
+    max-width: 2200px;
   }
 }

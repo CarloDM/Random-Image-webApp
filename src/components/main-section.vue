@@ -25,7 +25,7 @@
         sectionEdit.ratio = value;
       },
 
-      startScrolling(event){
+      startScrolling(){
         this.isDragging = true;
       },
       scrollCards(event){
@@ -46,20 +46,52 @@
         if (scrollPosition >= maxScroll * 0.9) {
           let sectionEdit = store.sections.find((section) => section.id == sectionId);
           sectionEdit.number += 1;
-          console.log('section:',sectionId,'number of Photo',sectionEdit.number)
         }
       },
       endScrolling(){
         this.isDragging = false;
       },
 
+      checkContainerSize() {
+      const cardsContainers = this.$refs.cardsContainers;
+      const cardsContainersWidth = cardsContainers[0].clientWidth
+      let   cardsWhidth = [];
+      let childWidth = 0;
+
+        for (let index = 0; index < cardsContainers.length; index++) {
+
+          let container = cardsContainers[index];
+          console.log('container' ,container.children, container.children.length );
+          cardsWhidth.push(0)
+
+          for (let childInd = 0; childInd < container.children.length; childInd++ ){
+            childWidth = container.children[childInd].clientWidth;
+            cardsWhidth[index] += childWidth;
+          }
+
+          while (cardsWhidth[index] < cardsContainersWidth) {
+            store.sections[index].number ++
+            cardsWhidth[index] += childWidth;
+          }
+        }
+      },
     },
+    updated(){
+      console.warn('update')
+      this.checkContainerSize();
+
+    },
+
     computed:{},
-    mounted(){}
+    mounted(){
+      this.checkContainerSize();
+    }
   }
   </script>
 
 <template>
+
+  <button @click="checkContainerSize">test</button>
   
   <section class="main_section position-relative "
   v-for="(sect) in store.sections" :key="sect.id"
@@ -71,13 +103,14 @@
       :ratio="sect.ratio"
       />
 
-      <div class="cards_container position-relative d-flex debug2 "
-      ref="scrollable"
+      <div class="cards_container position-relative d-flex"
+      ref="cardsContainers"
       @mousedown="startScrolling"
       @mousemove="scrollCards"
       @mouseleave="endScrolling"
       @mouseup="endScrolling"
       @scroll="handleScroll($event,sect.id)"
+
       >
 
         <ImgCard v-for="(card,cardIndex) in sect.number" :key="cardIndex" 
@@ -88,7 +121,7 @@
 
     </div>
 
-    <div class="overlay position-absolute w-100  "></div>
+    <div class="overlay position-absolute w-100"></div>
 
   </section>
 </template>
