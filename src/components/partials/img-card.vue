@@ -31,12 +31,11 @@
 
         axios.get(store.rdmIBaseUrl + ratio + store.format)
         .then(result =>{
-            console.log(result.data.url);
+            // console.log(result.data.url);
             this.imgUrl = result.data.url;
             this.load = true;
         })
         .catch(error => { console.log(error)
-
         })
       }
 
@@ -84,6 +83,7 @@
 <style lang="scss" scoped>
 .card_container{
   height: calc(400px - 30px);
+  pointer-events: none;
 }
 .card_img, .loading{
   height: 100%;

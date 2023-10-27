@@ -7,11 +7,12 @@
         ratioValue: 1,
       }
     },
+    props:{id:Number,ratio:Number},
     watch:{},
     methods:{
       handleChange(){
-        console.log(this.ratioValue);
-        this.$emit('ratio-change', parseInt(this.ratioValue));
+        // console.log(this.ratioValue);
+        this.$emit('ratio-change', parseInt(this.ratioValue),this.id);
       }
     },
     computed:{},

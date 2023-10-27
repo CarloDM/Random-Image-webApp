@@ -11,77 +11,84 @@
       }
     },
     components:{OptionBar,ImgCard},
-    watch:{
-      'store.sectionsRatios'(n,o){
-        if(n !=o){
-          console.log('main ratio ---->', store.sectionsRatios )
-        }
-      }
-    },
+    // watch:{
+    //   'store.sectionsRatios'(n,o){
+    //     if(n !=o){
+    //       console.log('main ratio ---->', store.sectionsRatios )
+    //     }
+    //   }
+    // },
     methods:{
-      ratioChange(value){
-        console.warn(value);
-        store.sectionsRatios = [value];
+      ratioChange(value, id){
+        console.warn(value, id);
+        let sectionEdit = store.sections.find((section) => section.id == id);
+        sectionEdit.ratio = value;
       },
 
       startScrolling(event){
         this.isDragging = true;
       },
-
       scrollCards(event){
-        const scrollableDiv = this.$refs.scrollable;
+        const scrollableDiv = event.target;
         if(this.isDragging){
           scrollableDiv.scrollLeft -= event.movementX * 1.5 ; 
         }
         // event.preventDefault();
       },
+      sendId(sectionId){
+        console.log(sectionId);
+      },
+      handleScroll(event, sectionId ){
+        const scrollableDiv = event.target;
+        const scrollPosition = scrollableDiv.scrollLeft;
+        const maxScroll = scrollableDiv.scrollWidth - scrollableDiv.clientWidth;
 
+        if (scrollPosition >= maxScroll * 0.9) {
+          let sectionEdit = store.sections.find((section) => section.id == sectionId);
+          sectionEdit.number += 1;
+          console.log('section:',sectionId,'number of Photo',sectionEdit.number)
+        }
+      },
       endScrolling(){
         this.isDragging = false;
       },
 
     },
     computed:{},
-    mounted(){
-      this.ratio = 2,
-      console.log(this.ratio)
-      this.ratio = 1
-      console.log(this.ratio)
-    }
+    mounted(){}
   }
   </script>
 
 <template>
-  <section class="main_section position-relative ">
+  
+  <section class="main_section position-relative "
+  v-for="(sect) in store.sections" :key="sect.id"
+  >
 
     <div class=" w-100 d-flex flex-column">
-      <OptionBar @ratio-change="ratioChange" />
+      <OptionBar @ratio-change="ratioChange"
+      :id="sect.id"
+      :ratio="sect.ratio"
+      />
 
-      <div  class="cards_container position-relative d-flex "
+      <div class="cards_container position-relative d-flex debug2 "
       ref="scrollable"
-
       @mousedown="startScrolling"
       @mousemove="scrollCards"
       @mouseleave="endScrolling"
       @mouseup="endScrolling"
-      
+      @scroll="handleScroll($event,sect.id)"
       >
 
-        <ImgCard
-        :ratio="store.sectionsRatios[0]"
-        />
-        <ImgCard
-        :ratio="store.sectionsRatios[0]"
-        />
-        <ImgCard
-        :ratio="store.sectionsRatios[0]"
+        <ImgCard v-for="(card,cardIndex) in sect.number" :key="cardIndex" 
+        :ratio="sect.ratio"
         />
 
       </div>
 
     </div>
-    <div class="overlay position-absolute w-100  "></div>
 
+    <div class="overlay position-absolute w-100  "></div>
 
   </section>
 </template>
