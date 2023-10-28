@@ -78,7 +78,12 @@
 
       addSection(){
         store.sectionsNumber ++;
-        let newSection = {id:store.sectionsNumber - 1 ,ratio:1,number:1};
+        let newSection = {id:store.sectionsNumber ,ratio:1,number:1,images:[]};
+        store.sections.push(newSection);
+      },
+      deleteSection(){
+        store.sectionsNumber ++;
+        let newSection = {id:store.sectionsNumber ,ratio:1,number:1};
         store.sections.push(newSection);
       }
     },
@@ -121,6 +126,7 @@
 
         <ImgCard v-for="(card,cardIndex) in sect.number" :key="cardIndex" 
         :ratio="sect.ratio"
+        :sectionId="sect.id"
         />
 
       </div>
@@ -142,13 +148,14 @@
 @use '../scss/_variables.scss' as *;
 .main_section{
   width: 100%;
-  height: 400px;
+  height: 420px;
   margin-top: 5px;
   overflow: hidden;
 }
 
 .cards_container{
   overflow: hidden;
+  height: calc(420px - 30px);
   cursor:grab;
   &:active{
     cursor:grabbing;
@@ -159,7 +166,7 @@
   pointer-events: none;
   top: 30px;
   left: 0px;
-  height: calc(400px - 30px);
+  height: calc(420px - 30px);
   background: linear-gradient(90deg, 
               $bg_black_80 0%,
               rgba(0,0,0,0) 1%, 

@@ -36,3 +36,8 @@
   filter: invert(0.4);
   transition : 500ms;
 }
+.add_favorite{
+  filter: invert(1);
+  transform: translateY(-1px);
+  transition : 500ms;
+}
