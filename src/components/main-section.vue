@@ -19,6 +19,7 @@
     //   }
     // },
     methods:{
+
       ratioChange(value, id){
         console.warn(value, id);
         let sectionEdit = store.sections.find((section) => section.id == id);
@@ -51,7 +52,6 @@
       endScrolling(){
         this.isDragging = false;
       },
-
       checkContainerSize() {
       const cardsContainers = this.$refs.cardsContainers;
       const cardsContainersWidth = cardsContainers[0].clientWidth
@@ -75,6 +75,12 @@
           }
         }
       },
+
+      addSection(){
+        store.sectionsNumber ++;
+        let newSection = {id:store.sectionsNumber - 1 ,ratio:1,number:1};
+        store.sections.push(newSection);
+      }
     },
     updated(){
       console.warn('update')
@@ -91,7 +97,7 @@
 
 <template>
 
-  <button @click="checkContainerSize">test</button>
+  <!-- <button @click="checkContainerSize">test</button> -->
   
   <section class="main_section position-relative "
   v-for="(sect) in store.sections" :key="sect.id"
@@ -124,6 +130,12 @@
     <div class="overlay position-absolute w-100"></div>
 
   </section>
+
+  <div class="add_btn"
+  @click="addSection">
+    <img class="add_icon" src="../assets/icon/plus-solid.svg" >
+  </div>
+
 </template>
 
 <style lang="scss" scoped>

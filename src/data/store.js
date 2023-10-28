@@ -13,11 +13,10 @@ export const store = reactive ({
   format: '&format=json',
 
 
-  sectionsRatios: [1],
   // array di oggetti section
-
+  sectionsNumber:1,
   sections : [
     {id:0,ratio:1,number:1},
-    {id:1,ratio:1,number:1},
+    // {id:1,ratio:1,number:1},
   ]
 })
