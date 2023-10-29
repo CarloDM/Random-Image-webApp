@@ -23,27 +23,29 @@
         else if(n == 3){this.getImage(store.ratioSixteenNinths)}
         else if(n == 4){this.getImage(store.ratioTwentyOneNinths)}
         else if(n == 5){this.getImage(store.ratiothirtyTwoNinths)}
-        
+        this.resetFavorite();
       }
     },
     methods:{
       getImage(ratio){
-
         this.load = false;
-
+        
         axios.get(store.rdmIBaseUrl + ratio + store.format)
         .then(result =>{
-            // console.log(result.data.url);
             this.imgUrl = result.data.url;
             this.load = true;
         })
         .catch(error => { console.log(error)
+          this.getImage();
         })
       },
 
       addFavorite(){
         this.favorite = !this.favorite;
       },
+      resetFavorite(){
+        this.favorite = false;
+      }
     },
     computed:{},
     mounted(){

@@ -24,6 +24,9 @@
         console.warn(value, id);
         let sectionEdit = store.sections.find((section) => section.id == id);
         sectionEdit.ratio = value;
+        //beccare la section by id e azzerare lo scroll
+        let scrollableDiv = document.getElementById(id);
+        scrollableDiv.scrollLeft = 0;
       },
 
       startScrolling(){
@@ -61,7 +64,7 @@
         for (let index = 0; index < cardsContainers.length; index++) {
 
           let container = cardsContainers[index];
-          console.log('container' ,container.children, container.children.length );
+          console.log('photo charged' , container.children.length );
           cardsWhidth.push(0)
 
           for (let childInd = 0; childInd < container.children.length; childInd++ ){
@@ -81,18 +84,15 @@
         let newSection = {id:store.sectionsNumber ,ratio:1,number:1,images:[]};
         store.sections.push(newSection);
       },
-      deleteSection(){
-        store.sectionsNumber ++;
-        let newSection = {id:store.sectionsNumber ,ratio:1,number:1};
-        store.sections.push(newSection);
-      }
+      // deleteSection(){
+      //   store.sectionsNumber ++;
+      //   let newSection = {id:store.sectionsNumber ,ratio:1,number:1};
+      //   store.sections.push(newSection);
+      // }
     },
     updated(){
-      console.warn('update')
       this.checkContainerSize();
-
     },
-
     computed:{},
     mounted(){
       this.checkContainerSize();
@@ -105,7 +105,7 @@
   <!-- <button @click="checkContainerSize">test</button> -->
   
   <section class="main_section position-relative "
-  v-for="(sect) in store.sections" :key="sect.id"
+  v-for="(sect) in store.sections" :key="sect.id" 
   >
 
     <div class=" w-100 d-flex flex-column">
@@ -116,6 +116,7 @@
 
       <div class="cards_container position-relative d-flex"
       ref="cardsContainers"
+      :id="sect.id"
       @mousedown="startScrolling"
       @mousemove="scrollCards"
       @mouseleave="endScrolling"
