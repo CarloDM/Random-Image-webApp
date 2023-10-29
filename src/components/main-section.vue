@@ -24,6 +24,9 @@
         console.warn(value, id);
         let sectionEdit = store.sections.find((section) => section.id == id);
         sectionEdit.ratio = value;
+        this.resetScroll(id);
+      },
+      resetScroll(id){
         //beccare la section by id e azzerare lo scroll
         let scrollableDiv = document.getElementById(id);
         scrollableDiv.scrollLeft = 0;
@@ -80,21 +83,22 @@
       },
 
       addSection(){
-        store.sectionsNumber ++;
-        let newSection = {id:store.sectionsNumber ,ratio:1,number:1,images:[]};
+        store.sectionsIdNumber ++;
+        let newSection = {id:store.sectionsIdNumber ,ratio:1,number:1,images:[]};
         store.sections.push(newSection);
       },
-      // deleteSection(){
-      //   store.sectionsNumber ++;
-      //   let newSection = {id:store.sectionsNumber ,ratio:1,number:1};
-      //   store.sections.push(newSection);
-      // }
+      deleteSection(id){
+        if(store.sections.length > 1){
+          store.sections = store.sections.filter(section => section.id != id);
+        }
+      }
     },
     updated(){
       this.checkContainerSize();
     },
     computed:{},
     mounted(){
+      this.resetScroll(0);
       this.checkContainerSize();
     }
   }
@@ -109,7 +113,7 @@
   >
 
     <div class=" w-100 d-flex flex-column">
-      <OptionBar @ratio-change="ratioChange"
+      <OptionBar @ratio-change="ratioChange" @delete-section="deleteSection"
       :id="sect.id"
       :ratio="sect.ratio"
       />

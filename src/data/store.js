@@ -3,7 +3,7 @@ import apiKeys from "./apiKeys";
 
 export const store = reactive ({
 
-  rdmImageUrl : 'https://random.imagecdn.app/v1/image?width=500&height=150&format=json',
+  // rdmImageUrl : 'https://random.imagecdn.app/v1/image?width=500&height=150&format=json', // base example
   rdmIBaseUrl : 'https://random.imagecdn.app/v1/image?',
   ratioSquare :          'width=300&height=300',   //  /2
   ratiofourthirds :      'width=400&height=300',   //  /2
@@ -14,8 +14,8 @@ export const store = reactive ({
 
 
   // array di oggetti section
-  sectionsNumber:1,
+  sectionsIdNumber:0,
   sections : [
-    {id:1,ratio:1,number:1, images:[],},
+    {id:0,ratio:1,number:1, images:[],},
   ]
 })

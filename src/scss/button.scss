@@ -1,9 +1,5 @@
-.add_btn{
-  width: 40px;
-  height: 40px;
-  margin: 15px 10px;
+.add_btn, .remove_btn{
   background-color: $bg_black_80;
-  padding: 10px 10px;
   border: solid $white_200 3px;
   border-radius: 50px;
   display: flex;
@@ -12,27 +8,38 @@
   box-shadow: $bg_black_40 0px 0px 10px 0px;
   transition : 500ms;
 }
-.add_btn:hover{
+.add_btn{
+  padding: 10px 10px;
+  width: 40px;
+  height: 40px;
+  margin: 15px 10px;
+}
+.remove_btn{
+  padding: 6px 6px;
+  width: 30px;
+  height: 30px;
+  margin: -1px 10px;
+}
+.add_btn:hover, .remove_btn:hover{
   transition : 500ms;
   background-color: $white_200;
-  color: #6b6b6b;
-  border: solid 3px #5c5c5c;
+  border: solid 3px $bg_black_80;
   box-shadow: $white_200 0px 0px 10px 0px;
   transition : 500ms;
 }
-.add_btn:hover:active{
+.add_btn:hover:active, .remove_btn:active {
   border: solid $white_220 3px;
   transition: 0ms;
 }
-.add_icon{
+.add_btn:hover:active .add_icon, .remove_btn:hover:active .remove_icon {
+  filter: invert(1);
+  transition: 0ms;
+}
+.add_icon,.remove_icon{
   filter: invert(0.9);
   transition : 500ms;
 }
-.add_icon:hover{
-  filter: invert(0.4);
-  transition : 500ms;
-}
-.add_btn:hover .add_icon{
+.add_btn:hover .add_icon, .remove_btn:hover .remove_icon {
   filter: invert(0.4);
   transition : 500ms;
 }
