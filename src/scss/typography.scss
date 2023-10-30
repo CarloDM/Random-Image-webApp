@@ -10,5 +10,26 @@ h3{
   height: 30px;
   margin-top: 11px;
 }
+@media screen and (min-width: 250px) {
+  .section_title{
+    font-size: 1em;
+    margin-top: 21px;
+  }
+  span{
+    font-size: 0.7em;
+    margin: 0px 5px 0px 2px;
+  }
+  
+}
+@media screen and (min-width: 635px) {
+  .section_title{
+    font-size: 1.7em;
+    margin-top: 11px;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .section_title{
 
+  }
+}
 

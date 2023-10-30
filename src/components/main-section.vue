@@ -1,5 +1,6 @@
   <script>
   import {store} from '../data/store';
+  import Header from '../components/header.vue';
   import OptionBar from './partials/option-bar.vue';
   import ImgCard from './partials/img-card.vue';
   export default {
@@ -10,7 +11,7 @@
         isDragging: false,
       }
     },
-    components:{OptionBar,ImgCard},
+    components:{Header,OptionBar,ImgCard},
     // watch:{
     //   'store.sectionsRatios'(n,o){
     //     if(n !=o){
@@ -90,7 +91,10 @@
         if(store.sections.length > 1){
           store.sections = store.sections.filter(section => section.id != id);
         }
-      }
+      },
+      listenWindowWidth(){
+        store.screenWidth = window.innerWidth;
+      },
     },
     updated(){
       this.checkContainerSize();
@@ -99,13 +103,15 @@
     mounted(){
       this.resetScroll(0);
       this.checkContainerSize();
+      this.listenWindowWidth();
+      window.addEventListener('resize', this.listenWindowWidth);
     }
   }
   </script>
 
 <template>
-
-  <section class="main_section position-relative mt-3" :style="{ height: store.sectionsHeight + 'px' }"
+  <Header/>
+  <section class="main_section w-100 position-relative mt-2" :style="{ height: store.sectionsHeight + 'px' }"
   v-for="(sect) in store.sections" :key="sect.id" 
   >
 
@@ -146,10 +152,7 @@
 
 <style lang="scss" scoped>
 @use '../scss/_variables.scss' as *;
-.main_section{
-  width: 100%;
-  // height: 200px;
-}
+
 
 .cards_container{
   overflow: hidden;

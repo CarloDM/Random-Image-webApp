@@ -24,7 +24,6 @@
 <template>
   <div class="main_wrapper">
 
-    <Header/>
     <Main/>
     <Footer/>
 

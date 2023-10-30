@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg width="400mm" height="400mm" version="1.1" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <radialGradient id="radialGradient1176" cx="200" cy="200" r="59.86" gradientTransform="matrix(1.162 0 0 1.162 -32.48 -31.23)" gradientUnits="userSpaceOnUse">
+      <stop offset="0"/>
+      <stop stop-opacity=".498" offset=".4721"/>
+      <stop stop-opacity="0" offset=".5051"/>
+      <stop stop-opacity=".2157" offset=".5406"/>
+      <stop stop-opacity="0" offset="1"/>
+    </radialGradient>
+  </defs>
+  <g transform="translate(0 7.678)">
+    <g stroke="#000" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m159.3 77.29h81.46c4.711 1.177 10.61 12.92 13.42 17.17 1.871 2.836-10.02 1.532-13.42 1.532h-81.46c-3.398 0-14.59 1.764-12.82-1.138 3.57-4.187 8.078-17.17 12.82-17.57z" fill="#000b4f" fill-opacity=".1792" stop-color="#000000" stroke-width="1.763"/>
+      <g>
+        <rect x="6.91" y="96.59" width="386.2" height="209.3" rx="0" ry="18.36" fill="#000b4f" fill-opacity=".1792" stop-color="#000000" stroke-width="4.65"/>
+        <circle cx="200" cy="201.2" r="95.75" fill="none" stop-color="#000000" stroke-width="4.65"/>
+        <circle cx="200" cy="201.2" r="88.69" fill="none" stop-color="#000000" stroke-width="4.306"/>
+        <circle cx="200" cy="201.2" r="67.93" fill="url(#radialGradient1176)" stop-color="#000000" stroke-width="3.299"/>
+        <rect x="314.7" y="109.3" width="63.12" height="22.14" ry="2.498" fill="#fdffcb" fill-opacity=".4277" stop-color="#000000" stroke-width="1.273"/>
+      </g>
+    </g>
+    <g fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-opacity=".6896">
+      <circle cx="200" cy="201.2" r="84.65" stop-color="#000000" stroke-width="4.11"/>
+      <circle cx="200" cy="201.2" r="81.19" stop-color="#000000" stroke-width="3.943"/>
+      <circle cx="200" cy="201.2" r="78.12" stop-color="#000000" stroke-width="3.793"/>
+      <circle cx="200" cy="201.2" r="75.04" stop-color="#000000" stroke-width="3.644"/>
+    </g>
+    <path d="m214.7 180.3a6.68 6.68 0 0 0-6.681 6.68 6.68 6.68 0 0 0 6.681 6.68 6.68 6.68 0 0 0 6.68-6.68 6.68 6.68 0 0 0-6.68-6.68zm-9.464 11.13a4.454 4.454 0 0 0-4.453 4.454 4.454 4.454 0 0 0 4.453 4.453 4.454 4.454 0 0 0 4.454-4.453 4.454 4.454 0 0 0-4.454-4.454z" fill="#fff" fill-opacity=".2736" stop-color="#000000"/>
+    <path d="m224.1 154.3a24 24 0 0 0-24 24 24 24 0 0 0 24 24 24 24 0 0 0 24-24 24 24 0 0 0-24-24zm-34 40a16 16 0 0 0-16 16 16 16 0 0 0 16 16 16 16 0 0 0 16-16 16 16 0 0 0-16-16z" fill="#fff" fill-opacity=".05975" stop-color="#000000"/>
+    <rect x="25.42" y="81.5" width="46.76" height="15.59" ry="4.454" stop-color="#000000" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.555"/>
+    <path d="m50.78 80.69v6.633c0 0.2991-0.2408 0.5399-0.5399 0.5399h-2.319c-0.2991 0-0.5399-0.2408-0.5399-0.5399v-6.633" fill="none" stop-color="#000000" stroke="#fff" stroke-opacity=".8491" stroke-width=".8009"/>
+  </g>
+</svg>

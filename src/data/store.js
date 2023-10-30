@@ -15,8 +15,11 @@ export const store = reactive ({
 
   // array di oggetti section
   sectionsIdNumber:0,
-  sectionsHeight: 400,
+  sectionsHeight: 380,
   sections : [
     {id:0,ratio:1,number:1, images:[],},
-  ]
+  ],
+
+
+  screenWidth:0,
 })
