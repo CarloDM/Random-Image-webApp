@@ -17,39 +17,39 @@
       deleteSection(){
         this.$emit('delete-section', this.id);
       },
-
-      // viewSelectedRatio(){
-      //   if(this.ratioValue == 2){
-      //   let opt = document.getElementById('opt1')
-      //   opt.setAttribute('selected', 'selected');
-      //   console.warn(opt)}
-      // },
     },
     computed:{},
     mounted(){
-      // this.viewSelectedRatio();
     }
   }
   </script>
 
 <template>
-  <div class="option_bar d-flex  debug1">
+  <div class="option_bar d-flex align-items-center mb">
 
-    <h5>Images 1</h5>
+    <div class="remove_btn"
+    @click="deleteSection">
+    <img class="remove_icon" src="../../assets/icon/minus-solid.svg" >
+    </div>
 
+
+    <h3 class="section_title mx-2 ">Sections {{ id }}</h3>
+
+    <!-- <label for="aspectRatio" class="ms-2 me-1">Ratio</label> -->
     <select v-model="ratioValue" @change="handleChange" 
-    name="aspectRatio" id="aspectRatio" class="select-options mx-1">
+    name="aspectRatio" id="aspectRatio" class="select_options  mx-2">
       <option id="opt1" value=1>1/1</option>
       <option id="opt2" value=2>4/3</option>
       <option id="opt3" value=3>16/9</option>
       <option id="opt4" value=4>21/9</option>
       <option id="opt5" value=5>32/9</option>
     </select>
-    <!-- v-if="id != 0"  -->
-    <div class="remove_btn"
-    @click="deleteSection">
-    <img class="remove_icon" src="../../assets/icon/minus-solid.svg" >
+    <span>Ratio</span>
+    <div class="server_info ms-auto">
+      <span>Random images From: <a href="https://random.imagecdn.app/" target="_blank"> random.imagecdn.app </a></span>
     </div>
+
+
 
   </div>
 </template>
@@ -58,6 +58,12 @@
   .option_bar{
     width: 100%;
     height: 30px;
+  }
+  .server_info{
+    font-family: sans-serif;
+    font-weight: 600;
+    font-size: 0.7rem;
+    padding-right: 10px;
   }
 
 </style>

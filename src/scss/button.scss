@@ -1,4 +1,15 @@
-.add_btn, .remove_btn{
+.select_options{
+  height: 30px;
+  width: 90px;
+  margin: -1px 0px;
+  padding: 1px 1px 1px 9px;
+  text-align:center;
+  color: $white_200;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+}
+
+.add_btn, .remove_btn, .select_options{
   background-color: $bg_black_80;
   border: solid $white_200 3px;
   border-radius: 50px;

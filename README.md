@@ -3,4 +3,4 @@
 ```
 npm i
 ```
-https://random.imagecdn.app/v1/docs
+https://random.imagecdn.app

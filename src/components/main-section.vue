@@ -27,7 +27,6 @@
         this.resetScroll(id);
       },
       resetScroll(id){
-        //beccare la section by id e azzerare lo scroll
         let scrollableDiv = document.getElementById(id);
         scrollableDiv.scrollLeft = 0;
       },
@@ -108,11 +107,11 @@
 
   <!-- <button @click="checkContainerSize">test</button> -->
   
-  <section class="main_section position-relative "
+  <section class="main_section position-relative mt-3 "
   v-for="(sect) in store.sections" :key="sect.id" 
   >
 
-    <div class=" w-100 d-flex flex-column">
+    <div class="section_container w-100 d-flex flex-column">
       <OptionBar @ratio-change="ratioChange" @delete-section="deleteSection"
       :id="sect.id"
       :ratio="sect.ratio"
@@ -126,7 +125,6 @@
       @mouseleave="endScrolling"
       @mouseup="endScrolling"
       @scroll="handleScroll($event,sect.id)"
-
       >
 
         <ImgCard v-for="(card,cardIndex) in sect.number" :key="cardIndex" 
@@ -135,7 +133,6 @@
         />
 
       </div>
-
     </div>
 
     <div class="overlay position-absolute w-100"></div>
@@ -154,8 +151,7 @@
 .main_section{
   width: 100%;
   height: 420px;
-  margin-top: 5px;
-  overflow: hidden;
+
 }
 
 .cards_container{

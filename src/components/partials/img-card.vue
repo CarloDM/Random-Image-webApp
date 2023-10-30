@@ -112,6 +112,7 @@
   border-radius: 10px;
   pointer-events: none;
   user-select: none;
+  font-size: 0.5rem;
 }
 .unselected{
   box-shadow: 0px 0px 9px $bg_black_40 ;
