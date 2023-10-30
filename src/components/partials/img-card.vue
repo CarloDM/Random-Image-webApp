@@ -55,7 +55,7 @@
   </script>
 
 <template>
-  <div class="card_container ">
+  <div class="card_container" :class="{'card_containe_selected' : favorite}">
 
     <div v-if="!(load)"
     class="loading"
@@ -71,7 +71,7 @@
     </div>
 
     <img v-else
-    class="card_img h-100 "
+    class="card_img  "
     :class="{
       'ratioSquare'         : ratio == 1,
       'ratiofourthirds'     : ratio == 2,
@@ -101,9 +101,13 @@
 <style lang="scss" scoped>
 @use '../../scss/variables' as *;
 .card_container{
-  height: calc(400px - 30px);
+  height: calc(100% - 30px);
   position: relative;
   pointer-events: none;
+  transition: all 500ms;
+}
+.card_containe_selected{
+  height: calc(103% - 30px);
 }
 .card_img, .loading{
   height: 100%;

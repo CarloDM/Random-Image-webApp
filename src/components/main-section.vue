@@ -105,13 +105,11 @@
 
 <template>
 
-  <!-- <button @click="checkContainerSize">test</button> -->
-  
-  <section class="main_section position-relative mt-3 "
+  <section class="main_section position-relative mt-3" :style="{ height: store.sectionsHeight + 'px' }"
   v-for="(sect) in store.sections" :key="sect.id" 
   >
 
-    <div class="section_container w-100 d-flex flex-column">
+    <div class="section_container w-100 h-100 d-flex flex-column">
       <OptionBar @ratio-change="ratioChange" @delete-section="deleteSection"
       :id="sect.id"
       :ratio="sect.ratio"
@@ -150,13 +148,12 @@
 @use '../scss/_variables.scss' as *;
 .main_section{
   width: 100%;
-  height: 420px;
-
+  // height: 200px;
 }
 
 .cards_container{
   overflow: hidden;
-  height: calc(420px - 30px);
+  height: calc(100% - 30px);
   cursor:grab;
   &:active{
     cursor:grabbing;
