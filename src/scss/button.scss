@@ -60,3 +60,19 @@
   transform: translateY(-1px);
   transition : 500ms;
 }
+.footer_icon{
+  height: 60%;
+  filter: invert(0.5);
+  transition : 500ms;
+  cursor: pointer;
+}
+.footer_icon:hover{
+  height: 60%;
+  filter: invert(0.8);
+  transition : 500ms;
+}
+.footer_icon:active{
+  height: 70%;
+  filter: invert(1);
+  transition : 0ms;
+}

@@ -56,7 +56,7 @@
 
 <template>
   <div class="card_container" :class="{'card_containe_selected' : favorite}">
-
+    <!-- fare il loading -->
     <div v-if="!(load)"
     class="loading"
     :class="{
