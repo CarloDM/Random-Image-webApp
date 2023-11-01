@@ -6,11 +6,13 @@ export const store = reactive ({
   // rdmImageUrl : 'https://random.imagecdn.app/v1/image?width=500&height=150&format=json', // base example
   // aggiungere 1 o 2  formati stretti
   rdmIBaseUrl : 'https://random.imagecdn.app/v1/image?',
-  ratioSquare :          'width=300&height=300',   //  /2
-  ratiofourthirds :      'width=400&height=300',   //  /2
-  ratioSixteenNinths :   'width=640&height=360', //  /3
-  ratioTwentyOneNinths : 'width=640&height=270', //  /4
-  ratiothirtyTwoNinths : 'width=870&height=270', //  /4
+  requestRatio: [
+    'width=300&height=300',   //ratioSquare :   /2
+    'width=400&height=300',   //ratiofourthirds :  /2
+    'width=640&height=360',   //ratioSixteenNinths :  /3
+    'width=640&height=270',   //ratioTwentyOneNinths :  /4
+    'width=870&height=270',   //ratiothirtyTwoNinths :  /4
+  ],
   format: '&format=json',
 
 
@@ -23,4 +25,5 @@ export const store = reactive ({
 
 
   screenWidth:0,
+  download: false,
 })

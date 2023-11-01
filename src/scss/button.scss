@@ -76,3 +76,10 @@
   filter: invert(1);
   transition : 0ms;
 }
+
+.footer_icon.off{
+  height: 50%;
+  filter: invert(0.1);
+  transition : 1000ms;
+  pointer-events: none;
+}

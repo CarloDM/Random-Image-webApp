@@ -5,10 +5,19 @@
     data(){
       return{
         store,
+        bottonCountDown: true,
       }
     },
     watch:{},
-    methods:{},
+    methods:{
+      startDownload(){
+        this.bottonCountDown = false;
+        store.download = !store.download;
+        setTimeout(() => {
+          this.bottonCountDown = true;
+        }, 3000);
+      },
+    },
     computed:{},
     mounted(){}
   }
@@ -20,7 +29,11 @@
 
         <img class="footer_icon"  src="../assets/icon/object-group-solid.svg" alt="">
         <!-- <img class="h-75"  src="../assets/icon/file-image-regular.svg" alt=""> -->
-        <img class="footer_icon"  src="../assets/icon/download-solid.svg" alt="">
+
+        <img class="footer_icon" :class="{'off' : !bottonCountDown}"
+        src="../assets/icon/download-solid.svg"
+        @click="startDownload"
+        >
       
         <input class="section_height_in footer_icon"
         type="range" min="150" max="380" v-model="store.sectionsHeight">
@@ -44,5 +57,6 @@
 .credits{
   background-image: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(40,40,40,1) 100%);;
 }
+
 
 </style>

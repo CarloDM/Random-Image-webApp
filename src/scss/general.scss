@@ -17,6 +17,9 @@
   padding: 0px;
   box-sizing: border-box;
 }
+body{
+  background-color: $bg_black_80;
+}
 
 .main_wrapper{
   background-color: $bg_black_80;
@@ -38,7 +41,6 @@ main {
   padding-top: 10px;
   padding-bottom: 80px;
   overflow-y: scroll;
-
   background-image:linear-gradient(0deg, $bg_black_80 99.5%,$bg_black_40 100%); ;
 }
 

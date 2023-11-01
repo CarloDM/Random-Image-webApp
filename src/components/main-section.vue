@@ -9,29 +9,34 @@
       return{
         store,
         isDragging: false,
+        download: false,
       }
     },
     components:{Header,OptionBar,ImgCard},
-    // watch:{
-    //   'store.sectionsRatios'(n,o){
-    //     if(n !=o){
-    //       console.log('main ratio ---->', store.sectionsRatios )
-    //     }
-    //   }
-    // },
+
     methods:{
 
       ratioChange(value, id){
-        console.warn(value, id);
         let sectionEdit = store.sections.find((section) => section.id == id);
         sectionEdit.ratio = value;
         this.resetScroll(id);
       },
+
+      addSection(){
+        store.sectionsIdNumber ++;
+        let newSection = {id:store.sectionsIdNumber ,ratio:1,number:1,images:[]};
+        store.sections.push(newSection);
+      },
+      deleteSection(id){
+        if(store.sections.length > 1){
+          store.sections = store.sections.filter(section => section.id != id);
+        }
+      },
+
       resetScroll(id){
         let scrollableDiv = document.getElementById(id);
         scrollableDiv.scrollLeft = 0;
       },
-
       startScrolling(){
         this.isDragging = true;
       },
@@ -41,9 +46,6 @@
           scrollableDiv.scrollLeft -= event.movementX * 1.5 ; 
         }
         // event.preventDefault();
-      },
-      sendId(sectionId){
-        console.log(sectionId);
       },
       handleScroll(event, sectionId ){
         const scrollableDiv = event.target;
@@ -58,6 +60,7 @@
       endScrolling(){
         this.isDragging = false;
       },
+
       checkContainerSize() {
       const cardsContainers = this.$refs.cardsContainers;
       const cardsContainersWidth = cardsContainers[0].clientWidth
@@ -67,7 +70,6 @@
         for (let index = 0; index < cardsContainers.length; index++) {
 
           let container = cardsContainers[index];
-          console.log('photo charged' , container.children.length );
           cardsWhidth.push(0)
 
           for (let childInd = 0; childInd < container.children.length; childInd++ ){
@@ -82,16 +84,6 @@
         }
       },
 
-      addSection(){
-        store.sectionsIdNumber ++;
-        let newSection = {id:store.sectionsIdNumber ,ratio:1,number:1,images:[]};
-        store.sections.push(newSection);
-      },
-      deleteSection(id){
-        if(store.sections.length > 1){
-          store.sections = store.sections.filter(section => section.id != id);
-        }
-      },
       listenWindowWidth(){
         store.screenWidth = window.innerWidth;
       },
@@ -99,7 +91,7 @@
     updated(){
       this.checkContainerSize();
     },
-    computed:{},
+
     mounted(){
       this.resetScroll(0);
       this.checkContainerSize();
