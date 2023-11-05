@@ -57,7 +57,7 @@ main {
   height: calc(100vh );
   padding-top: 10px;
   padding-bottom: 80px;
-  overflow-y: scroll;
+  overflow-y: hidden;
   scroll-behavior: smooth;
   background-image:linear-gradient(0deg, $bg_black_80 99.5%,$bg_black_40 100%); ;
 }
@@ -74,7 +74,6 @@ main {
 }
 .cards_container{
   overflow: hidden;
-  scroll-behavior: smooth;
   height: calc(100% - 30px);
   cursor:grab;
   &:active{
@@ -102,7 +101,7 @@ footer{
   border: 2px solid black;
   box-shadow:inset 0px 0px 30px black ;
   transition : 500ms;
-  clip-path: polygon(0% 0%, 0 70%, 0 100%, 95% 100%, 95% 70%, 95% 0);
+  clip-path: polygon(0% 0%, 0 70%, 0 100%, 100% 100%, 100% 70%, 100% 0);
 }
 footer:hover{
   opacity: 100%;
@@ -129,7 +128,7 @@ footer:hover{
     width: 97%;
   }
   footer{
-    clip-path: polygon(0% 0%, 0 70%, 0 100%, 96.5% 100%, 96.5% 70%, 96.5% 0);
+    clip-path: polygon(0% 0%, 0 70%, 0 100%, 100% 100%, 100% 70%, 100% 0);
   }
 }
 @media screen and (min-width: 600px) {
@@ -137,7 +136,7 @@ footer:hover{
     width: 75%;
   }
   footer{
-    clip-path: polygon(12% 0%, 2% 70%, 0% 100%, 99% 100%, 98% 70%, 88% 0);
+    clip-path: polygon(12% 0%, 0% 70%, 0% 100%, 100% 100%, 100% 70%, 88% 0);
   }
 }
 @media screen and (min-width: 1200px) {
@@ -148,8 +147,7 @@ footer:hover{
     width: 70%;
   }
   footer{
-    // max-width: 1200px;
-    clip-path: polygon(15% 0%, 2% 70%, 0% 100%, 99.5% 100%, 98% 70%, 85% 0);
+    clip-path: polygon(15% 0%, 0% 70%, 0% 100%, 100% 100%, 100% 70%, 88% 0);
   }
 }
 @media screen and (min-width: 1600px) {

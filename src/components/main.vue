@@ -3,11 +3,19 @@
   export default {
     name:'Main',
     components:{MainSection,},
+    methods:{
+      mainScroll(event){
+        const scrollableDiv = this.$refs.main;
+          scrollableDiv.scrollTop += event.deltaY * 2.5 ; 
+      },
+    },
   }
   </script>
 
 <template>
-  <main>
+  <main
+  @wheel="mainScroll"
+  ref="main">
     <div class="my_container">
       <MainSection/>
     </div>
