@@ -1,10 +1,8 @@
 import { reactive } from "vue";
-import apiKeys from "./apiKeys";
 
 export const store = reactive ({
-
   // rdmImageUrl : 'https://random.imagecdn.app/v1/image?width=500&height=150&format=json', // base example
-  // aggiungere 1 o 2  formati stretti
+
   rdmIBaseUrl : 'https://random.imagecdn.app/v1/image?',
   requestRatio: [
     'width=300&height=300',   //ratioSquare :   /2
@@ -15,14 +13,11 @@ export const store = reactive ({
   ],
   format: '&format=json',
 
-
-  // array di oggetti section
   sectionsIdNumber:0,
   sectionsHeight: 380,
   sections : [
     {id:0,ratio:1,number:1, images:[],},
   ],
-
 
   screenWidth:0,
   download: false,

@@ -1,4 +1,4 @@
-  <script>
+  <script defer>
   import { store } from '../data/store';
   export default {
     name:'Footer',
@@ -35,7 +35,7 @@
         @click="startDownload"
         >
       
-        <input class="section_height_in footer_icon"
+        <input class="section_height_input footer_icon"
         type="range" min="150" max="380" v-model="store.sectionsHeight">
 
     </div>
@@ -49,14 +49,3 @@
     </div>
   </footer>
 </template>
-
-<style lang="scss" scoped>
-.section_height_in{
-  width: 80px;
-}
-.credits{
-  background-image: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(40,40,40,1) 100%);;
-}
-
-
-</style>

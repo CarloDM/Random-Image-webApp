@@ -1,4 +1,4 @@
-  <script>
+  <script async>
   import {store} from '../../data/store'
   import axios from 'axios';
   export default {
@@ -13,10 +13,12 @@
         provider: '',
       }
     },
+    
     props:{
       ratio: Number,
       sectionId: Number,
     },
+
     watch:{
       ratio(n,o){
         if(n !== o){this.getImage()}
@@ -29,12 +31,14 @@
         }
       }
     },
+
     methods:{
+
       getImage(){
         this.load = false;
+
         axios.get(store.rdmIBaseUrl + store.requestRatio[this.ratio - 1] + store.format)
         .then(result =>{
-            console.log(result.data)
             this.imgUrl = result.data.url;
             this.license= result.data.license,
             this.provider= result.data.provider,
@@ -44,6 +48,7 @@
           this.getImage();
         })
       },
+
       SectionIndex(){
         const sectionIndex = store.sections.findIndex((section) => section.id === this.sectionId);
         return sectionIndex;
@@ -102,9 +107,7 @@
           .catch(error => console.error('Errore durante il recupero dell immagine:', error));
         }
       },
-
     },
-    computed:{},
     mounted(){
       this.getImage();
     }
@@ -112,47 +115,44 @@
   </script>
 
 <template>
-
   <div class="card_container" :class="{'card_containe_selected' : favorite}">
-    <div v-if="!(load)"
-    class="loading lds-ripple"
-    :class="{
-      'ratioSquare'         : ratio == 1,
-      'ratiofourthirds'     : ratio == 2,
-      'ratioSixteenNinths'  : ratio == 3,
-      'ratioTwentyOneNinths': ratio == 4,
-      'ratiothirtyTwoNinths': ratio == 5,
-    }"
-    >
-      <div></div><div></div><div></div>
-    </div>
-    
-    <img v-else
-    class="card_img"
-    :class="{
-      'ratioSquare'         : ratio == 1,
-      'ratiofourthirds'     : ratio == 2,
-      'ratioSixteenNinths'  : ratio == 3,
-      'ratioTwentyOneNinths': ratio == 4,
-      'ratiothirtyTwoNinths': ratio == 5,
-      'unselected' : !favorite,
-      'selected' : favorite,
-    }"
-    :src= 'imgUrl'  
 
-    >
+      <div v-if="!(load)"
+      class="loading lds-ripple"
+      :class="{
+        'ratioSquare'         : ratio == 1,
+        'ratiofourthirds'     : ratio == 2,
+        'ratioSixteenNinths'  : ratio == 3,
+        'ratioTwentyOneNinths': ratio == 4,
+        'ratiothirtyTwoNinths': ratio == 5,
+      }"
+      >
+          <div></div><div></div><div></div>
+      </div>
 
-
-    <div @click="toggleFavorite"
-    class="favorite position-absolute d-flex justify-content-center align-items-center ">
-
-      <img v-if="!favorite"
-      class="add_favorite" src="../../assets/icon/star-regular.svg" alt="">
       <img v-else
-      class="add_favorite" src="../../assets/icon/star-solid.svg" alt="">
+      class="card_img"
+      :class="{
+        'ratioSquare'         : ratio == 1,
+        'ratiofourthirds'     : ratio == 2,
+        'ratioSixteenNinths'  : ratio == 3,
+        'ratioTwentyOneNinths': ratio == 4,
+        'ratiothirtyTwoNinths': ratio == 5,
+        'unselected' : !favorite,
+        'selected' : favorite,
+      }"
+      :src= 'imgUrl'  
+      >
 
-    </div>
+      <div @click="toggleFavorite"
+      class="favorite position-absolute d-flex justify-content-center align-items-center ">
 
+        <img v-if="!favorite"
+        class="add_favorite" src="../../assets/icon/star-regular.svg" alt="">
+        <img v-else
+        class="add_favorite" src="../../assets/icon/star-solid.svg" alt="">
+
+      </div>
   </div>
 </template>
 
@@ -167,6 +167,7 @@
 .card_containe_selected{
   height: calc(103% - 30px);
 }
+
 .card_img, .loading{
   height: 100%;
   object-fit: cover;
@@ -176,6 +177,7 @@
   user-select: none;
   font-size: 0.5rem;
 }
+
 .unselected{
   box-shadow: 0px 0px 9px $bg_black_40 ;
   transition: 500ms;

@@ -8,7 +8,6 @@
   font-size: 0.8rem;
   letter-spacing: 0.2em;
 }
-
 .add_btn, .remove_btn, .select_options{
   background-color: $bg_black_80;
   border: solid $white_200 3px;
@@ -55,11 +54,15 @@
   filter: invert(0.4);
   transition : 500ms;
 }
+
 .add_favorite{
+  width: 30px;
+  height: 30px;
   filter: invert(1);
   transform: translateY(-1px);
   transition : 500ms;
 }
+
 .footer_icon{
   height: 60%;
   filter: invert(0.5);
@@ -76,7 +79,6 @@
   filter: invert(1);
   transition : 0ms;
 }
-
 .footer_icon.off{
   height: 50%;
   filter: invert(0.1);

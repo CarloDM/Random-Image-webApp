@@ -1,4 +1,4 @@
-  <script>
+  <script defer>
   import {store} from '../data/store';
   import Header from '../components/header.vue';
   import OptionBar from './partials/option-bar.vue';
@@ -12,6 +12,7 @@
         download: false,
       }
     },
+
     components:{Header,OptionBar,ImgCard},
 
     methods:{
@@ -62,32 +63,35 @@
       },
 
       checkContainerSize() {
-      const cardsContainers = this.$refs.cardsContainers;
-      const cardsContainersWidth = cardsContainers[0].clientWidth
-      let   cardsWhidth = [];
-      let childWidth = 0;
+        const cardsContainers = this.$refs.cardsContainers;
+        const cardsContainersWidth = cardsContainers[0].clientWidth
+        let   cardsWhidth = [];
+        let childWidth = 0;
 
         for (let index = 0; index < cardsContainers.length; index++) {
 
-          let container = cardsContainers[index];
-          cardsWhidth.push(0)
-
-          for (let childInd = 0; childInd < container.children.length; childInd++ ){
-            childWidth = container.children[childInd].clientWidth;
-            cardsWhidth[index] += childWidth;
-          }
-
-          while (cardsWhidth[index] < cardsContainersWidth) {
-            store.sections[index].number ++
-            cardsWhidth[index] += childWidth;
-          }
+            let container = cardsContainers[index];
+            cardsWhidth.push(0)
+          
+            for (let childInd = 0; childInd < container.children.length; childInd++ ){
+              childWidth = container.children[childInd].clientWidth;
+              cardsWhidth[index] += childWidth;
+            }
+          
+            while (cardsWhidth[index] < cardsContainersWidth) {
+              store.sections[index].number ++
+              cardsWhidth[index] += childWidth;
+            }
         }
       },
 
       listenWindowWidth(){
         store.screenWidth = window.innerWidth;
+        this.checkContainerSize()
       },
+
     },
+
     updated(){
       this.checkContainerSize();
     },
@@ -103,69 +107,42 @@
 
 <template>
   <Header/>
+  
   <section class="main_section w-100 position-relative mt-2" :style="{ height: store.sectionsHeight + 'px' }"
   v-for="(sect) in store.sections" :key="sect.id" 
   >
 
-    <div class="section_container w-100 h-100 d-flex flex-column">
-      <OptionBar @ratio-change="ratioChange" @delete-section="deleteSection"
-      :id="sect.id"
-      :ratio="sect.ratio"
-      />
+    <div class="section_container w-100 h-100 d-flex flex-column ">
 
-      <div class="cards_container position-relative d-flex"
-      ref="cardsContainers"
-      :id="sect.id"
-      @mousedown="startScrolling"
-      @mousemove="scrollCards"
-      @mouseleave="endScrolling"
-      @mouseup="endScrolling"
-      @scroll="handleScroll($event,sect.id)"
-      >
-
-        <ImgCard v-for="(card,cardIndex) in sect.number" :key="cardIndex" 
+        <OptionBar @ratio-change="ratioChange" @delete-section="deleteSection"
+        :id="sect.id"
         :ratio="sect.ratio"
-        :sectionId="sect.id"
         />
 
-      </div>
+        <div class="cards_container position-relative d-flex "
+        ref="cardsContainers"
+        :id="sect.id"
+        @mousedown="startScrolling"
+        @mousemove="scrollCards"
+        @mouseleave="endScrolling"
+        @mouseup="endScrolling"
+        @scroll="handleScroll($event,sect.id)"
+        >
+            <ImgCard v-for="(card,cardIndex) in sect.number" :key="cardIndex" 
+            :ratio="sect.ratio"
+            :sectionId="sect.id"
+            />
+        </div>
+        <div class="overlay position-absolute w-100"></div>
+
     </div>
 
-    <div class="overlay position-absolute w-100"></div>
 
   </section>
 
   <div class="add_btn"
   @click="addSection">
-    <img class="add_icon" src="../assets/icon/plus-solid.svg" >
+      <img class="add_icon" src="../assets/icon/plus-solid.svg" >
   </div>
 
 </template>
-
-<style lang="scss" scoped>
-@use '../scss/_variables.scss' as *;
-
-
-.cards_container{
-  overflow: hidden;
-  height: calc(100% - 30px);
-  cursor:grab;
-  &:active{
-    cursor:grabbing;
-  }
-}
-
-.overlay{
-  pointer-events: none;
-  top: 30px;
-  left: 0px;
-  height: calc(420px - 30px);
-  background: linear-gradient(90deg, 
-              $bg_black_80 0%,
-              rgba(0,0,0,0) 1%, 
-              rgba(0,0,0,0) 99%, 
-              $bg_black_80 100%);
-
-}
-
-</style>
