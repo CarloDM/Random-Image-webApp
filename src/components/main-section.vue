@@ -35,23 +35,23 @@
       },
 
       resetScroll(id){
-        let scrollableDiv = document.getElementById(id);
-        scrollableDiv.scrollLeft = 0;
+        let scrollableSection = document.getElementById(id);
+        scrollableSection.scrollLeft = 0;
       },
       startScrolling(){
         this.isDragging = true;
       },
       scrollCards(event){
-        const scrollableDiv = event.target;
+        const scrollableSection = event.target;
         if(this.isDragging){
-          scrollableDiv.scrollLeft -= event.movementX * 1.5 ; 
+          scrollableSection.scrollLeft -= event.movementX * 1.5 ; 
         }
         // event.preventDefault();
       },
       handleScroll(event, sectionId ){
-        const scrollableDiv = event.target;
-        const scrollPosition = scrollableDiv.scrollLeft;
-        const maxScroll = scrollableDiv.scrollWidth - scrollableDiv.clientWidth;
+        const scrollableSection = event.target;
+        const scrollPosition = scrollableSection.scrollLeft;
+        const maxScroll = scrollableSection.scrollWidth - scrollableSection.clientWidth;
 
         if (scrollPosition >= maxScroll * 0.9) {
           let sectionEdit = store.sections.find((section) => section.id == sectionId);
@@ -78,7 +78,7 @@
               cardsWhidth[index] += childWidth;
             }
           
-            while (cardsWhidth[index] < cardsContainersWidth) {
+            while (cardsWhidth[index] <= cardsContainersWidth) {
               store.sections[index].number ++
               cardsWhidth[index] += childWidth;
             }

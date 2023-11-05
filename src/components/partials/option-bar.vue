@@ -27,8 +27,8 @@
       <img class="remove_icon" src="../../assets/icon/minus-solid.svg" >
     </div>
 
-    <h3 v-if="store.screenWidth > 532" class="section_title mx-2 ">Sections {{ id }}</h3>
-    <h3 v-else                         class="section_title mx-2 ">         {{ id }}</h3>
+    <h3 v-if="store.screenWidth > 532" class="section_title mx-2 ">Section {{ id }}</h3>
+    <h3 v-else                         class="section_title mx-2 ">        {{ id }}</h3>
 
     <select v-model="ratioValue" @change="handleChange" 
     name="aspectRatio" id="aspectRatio" class="select_options  mx-2">

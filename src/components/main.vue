@@ -5,8 +5,8 @@
     components:{MainSection,},
     methods:{
       mainScroll(event){
-        const scrollableDiv = this.$refs.main;
-          scrollableDiv.scrollTop += event.deltaY * 2.5 ; 
+        const scrollableMain = this.$refs.main;
+          scrollableMain.scrollTop += event.deltaY * 2.5 ; 
       },
     },
   }
