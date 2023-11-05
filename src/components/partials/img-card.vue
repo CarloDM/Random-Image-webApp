@@ -26,7 +26,6 @@
       },
       'store.download'(n,o){
         if(n !== o){
-          console.warn('DOWNLOAD!');
           this.takeDownload();
         }
       }
@@ -93,6 +92,7 @@
       takeDownload(){
         if(this.favorite){
           const imgUrl = this.hResUrlModifier(this.ratio)
+          console.warn('DOWNLOAD!', imgUrl);
           fetch(imgUrl)
           .then(response => response.blob())
           .then(blob => {

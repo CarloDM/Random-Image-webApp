@@ -58,6 +58,7 @@ main {
   padding-top: 10px;
   padding-bottom: 80px;
   overflow-y: scroll;
+  scroll-behavior: smooth;
   background-image:linear-gradient(0deg, $bg_black_80 99.5%,$bg_black_40 100%); ;
 }
 .option_bar{
@@ -73,6 +74,7 @@ main {
 }
 .cards_container{
   overflow: hidden;
+  scroll-behavior: smooth;
   height: calc(100% - 30px);
   cursor:grab;
   &:active{
