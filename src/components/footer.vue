@@ -27,7 +27,7 @@
   <footer>
     <div class="my_container_small d_flex justify_content_around align_items_center h_75 ">
 
-        <img class="footer_icon"  src="../assets/icon/object-group-solid.svg" alt="">
+        <!-- <img class="footer_icon"  src="../assets/icon/object-group-solid.svg" alt=""> -->
         <!-- <img class="h-75"  src="../assets/icon/file-image-regular.svg" alt=""> -->
 
         <img class="footer_icon" :class="{'off' : !bottonCountDown}"
