@@ -23,14 +23,14 @@
 <template>
   <div @change="listenWindowWidth" class="option_bar d_flex align_items_center">
 
-    <div class="remove_btn" @click="deleteSection">
+    <div class="remove_btn" @click.passive="deleteSection">
       <img class="remove_icon" src="../../assets/icon/minus-solid.svg" >
     </div>
 
     <h3 v-if="store.screenWidth > 532" class="section_title mx_2 ">Section {{ id }}</h3>
     <h3 v-else                         class="section_title mx_2 ">        {{ id }}</h3>
 
-    <select v-model="ratioValue" @change="handleChange" 
+    <select v-model="ratioValue" @change.passive="handleChange" 
     name="aspectRatio" id="aspectRatio" class="select_options  mx_2">
       <option id="opt1" value=1>1/1</option>
       <option id="opt2" value=2>4/3</option>

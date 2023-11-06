@@ -32,7 +32,7 @@
 
         <img class="footer_icon" :class="{'off' : !bottonCountDown}"
         src="../assets/icon/download-solid.svg"
-        @click="startDownload"
+        @click.passive="startDownload"
         >
       
         <input class="section_height_input footer_icon"

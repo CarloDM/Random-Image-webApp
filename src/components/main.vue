@@ -14,7 +14,7 @@
 
 <template>
   <main
-  @wheel="mainScroll"
+  @wheel.passive="mainScroll"
   ref="main">
     <div class="my_container">
       <MainSection/>

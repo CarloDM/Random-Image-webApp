@@ -122,11 +122,11 @@
         <div class="cards_container position_relative d_flex "
         ref="cardsContainers"
         :id="sect.id"
-        @mousedown="startScrolling"
-        @mousemove="scrollCards"
-        @mouseleave="endScrolling"
-        @mouseup="endScrolling"
-        @scroll="handleScroll($event,sect.id)"
+        @mousedown.passive="startScrolling"
+        @mousemove.passive="scrollCards"
+        @mouseleave.passive="endScrolling"
+        @mouseup.passive="endScrolling"
+        @scroll.passive="handleScroll($event,sect.id)"
         >
             <ImgCard v-for="(card,cardIndex) in sect.number" :key="cardIndex" 
             :ratio="sect.ratio"
@@ -141,7 +141,7 @@
   </section>
 
   <div class="add_btn"
-  @click="addSection">
+  @click.passive="addSection">
       <img class="add_icon" src="../assets/icon/plus-solid.svg" >
   </div>
 
