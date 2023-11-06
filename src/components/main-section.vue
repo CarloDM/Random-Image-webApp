@@ -108,18 +108,18 @@
 <template>
   <Header/>
   
-  <section class="main_section w-100 position-relative mt-2" :style="{ height: store.sectionsHeight + 'px' }"
+  <section class="main_section w_100 position_relative mt_2" :style="{ height: store.sectionsHeight + 'px' }"
   v-for="(sect) in store.sections" :key="sect.id" 
   >
 
-    <div class="section_container w-100 h-100 d-flex flex-column ">
+    <div class="section_container w_100 h_100 d_flex flex_column ">
 
         <OptionBar @ratio-change="ratioChange" @delete-section="deleteSection"
         :id="sect.id"
         :ratio="sect.ratio"
         />
 
-        <div class="cards_container position-relative d-flex "
+        <div class="cards_container position_relative d_flex "
         ref="cardsContainers"
         :id="sect.id"
         @mousedown="startScrolling"
@@ -133,7 +133,7 @@
             :sectionId="sect.id"
             />
         </div>
-        <div class="overlay position-absolute w-100"></div>
+        <div class="overlay position_absolute w_100"></div>
 
     </div>
 

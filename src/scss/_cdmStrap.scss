@@ -1,0 +1,116 @@
+// dimensioni
+.w_100{
+  width: 100%;
+}
+.w_75{
+  width: 75%;
+}
+.w_50{
+  width: 50%;
+}
+.w_25{
+  width: 25%;
+}
+.h_100{
+  height: 100%;
+}
+.h_75{
+  height: 75%;
+}
+.h_50{
+  height: 50%;
+}
+.h_25{
+  height: 25%;
+}
+// margin & padding
+.mt_1{
+  margin-top: 0.25rem;
+}
+.mt_2{
+  margin-top: 0.5rem;
+}
+.mt_3{
+  margin-top: 1rem;
+}
+.mt_4{
+  margin-top: 2rem;
+}
+.mt_5{
+  margin-top: 3rem;
+}
+.mt_5{
+  margin-top: 4rem;
+}
+
+.mx_1{
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+.mx_2{
+  margin-left: 0.5rem !important;
+  margin-right: 0.5rem !important;
+}
+.mx_3{
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.mx_4{
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+.mx_5{
+  margin-left: 3rem;
+  margin-right: 3rem;
+}
+.mx_6{
+  margin-left: 4rem;
+  margin-right: 4rem;
+}
+
+.ms_auto{
+  margin-left: auto !important;
+}
+
+//text
+.text_center{
+  text-align: center;
+}
+
+// flex
+.d_flex{
+  display: flex;
+}
+.flex_column{
+  flex-direction: column;
+}
+.flex_row{
+  flex-direction: row;
+}
+.justify_content_center{
+  justify-content: center;
+}
+.justify_content_around{
+justify-content: space-around;
+}
+.align_items_center{
+  align-items: center;
+}
+
+//position
+.position_relative{
+  position: relative;
+}
+.position_absolute{
+  position: absolute;
+}
+
+// button
+
+.btn_group_vertical{
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  position: relative;
+  display: inline-flex;
+}

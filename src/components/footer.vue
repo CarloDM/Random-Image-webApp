@@ -24,8 +24,8 @@
   </script>
 
 <template>
-  <footer class="">
-    <div class="my_container_small d-flex justify-content-around align-items-center h-75 ">
+  <footer>
+    <div class="my_container_small d_flex justify_content_around align_items_center h_75 ">
 
         <img class="footer_icon"  src="../assets/icon/object-group-solid.svg" alt="">
         <!-- <img class="h-75"  src="../assets/icon/file-image-regular.svg" alt=""> -->
@@ -40,7 +40,7 @@
 
     </div>
     
-    <div class="credits w-100 h-25 text-center ">
+    <div class="credits w_100 h_25 text_center ">
 
         <span>made whit &hearts; by 
           <a href="https://github.com/CarloDM" target="_black">Carlo De Mauro</a>

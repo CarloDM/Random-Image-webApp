@@ -1,6 +1,8 @@
 @use './_variables.scss' as * ;
-@import '/node_modules/bootstrap/scss/bootstrap.scss';
+// @import '/node_modules/bootstrap/scss/bootstrap.scss';
+@import './cdmStrap';
 @import './general.scss';
 @import './typography.scss';
 @import './button.scss';
 @import './mainSection.scss';
+@import './imgCard.scss';
