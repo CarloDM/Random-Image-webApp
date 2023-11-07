@@ -123,8 +123,11 @@
         ref="cardsContainers"
         :id="sect.id"
         @mousedown.passive="startScrolling"
+        @touchstart.passive="startScrolling"
         @mousemove.passive="scrollCards"
+        @touchmove.passive="scrollCards"
         @mouseleave.passive="endScrolling"
+        @touchend.passive="endScrolling"
         @mouseup.passive="endScrolling"
         @scroll.passive="handleScroll($event,sect.id)"
         >
