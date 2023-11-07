@@ -9,6 +9,7 @@
       return{
         store,
         isDragging: false,
+        touchStart:0,
         download: false,
       }
     },
@@ -41,13 +42,28 @@
       startScrolling(){
         this.isDragging = true;
       },
+      startTouching(event){
+        console.log('start touch', event.changedTouches[0].clientX);
+        this.touchStart = event.changedTouches[0].clientX
+        this.startScrolling();
+      },
       scrollCards(event){
         const scrollableSection = event.target;
         if(this.isDragging){
+          console.log('mouse movementX',event.movementX);
           scrollableSection.scrollLeft -= event.movementX * 1.5 ; 
         }
         // event.preventDefault();
       },
+      moveCards(event){
+        console.log('move touch',event.changedTouches[0].clientX - this.touchStart );
+        const scrollableSection = event.target;
+        if(this.isDragging){
+          scrollableSection.scrollLeft -= (event.changedTouches[0].clientX - this.touchStart) * 1.5 ; 
+        }
+        this.touchStart = event.changedTouches[0].clientX;
+      },
+
       handleScroll(event, sectionId ){
         const scrollableSection = event.target;
         const scrollPosition = scrollableSection.scrollLeft;
@@ -60,6 +76,10 @@
       },
       endScrolling(){
         this.isDragging = false;
+      },
+      endTouching(event){
+        console.log('end touching', event);
+        this.endScrolling();
       },
 
       checkContainerSize() {
@@ -126,6 +146,9 @@
         @mousemove.passive="scrollCards"
         @mouseleave.passive="endScrolling"
         @mouseup.passive="endScrolling"
+        @touchstart="startTouching"
+        @touchmove="moveCards"
+        @touchend="endTouching"
         @scroll.passive="handleScroll($event,sect.id)"
         >
             <ImgCard v-for="(card,cardIndex) in sect.number" :key="cardIndex" 
