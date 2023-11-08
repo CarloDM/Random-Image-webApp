@@ -27,11 +27,14 @@
       addSection(){
         store.sectionsIdNumber ++;
         let newSection = {id:store.sectionsIdNumber ,ratio:1,number:1,images:[]};
+        let newallLoadedImg = {sectionId:store.sectionsIdNumber, images:[]};
         store.sections.push(newSection);
+        store.allLoadedImg.push(newallLoadedImg);
       },
       deleteSection(id){
         if(store.sections.length > 1){
           store.sections = store.sections.filter(section => section.id != id);
+          store.allLoadedImg = store.allLoadedImg.filter(section => section.sectionId != id);
         }
       },
 
@@ -43,20 +46,17 @@
         this.isDragging = true;
       },
       startTouching(event){
-        console.log('start touch', event.changedTouches[0].clientX);
         this.touchStart = event.changedTouches[0].clientX
         this.startScrolling();
       },
       scrollCards(event){
         const scrollableSection = event.target;
         if(this.isDragging){
-          console.log('mouse movementX',event.movementX);
           scrollableSection.scrollLeft -= event.movementX * 1.5 ; 
         }
         // event.preventDefault();
       },
       moveCards(event){
-        console.log('move touch',event.changedTouches[0].clientX - this.touchStart );
         const scrollableSection = event.target;
         if(this.isDragging){
           scrollableSection.scrollLeft -= (event.changedTouches[0].clientX - this.touchStart) * 1.5 ; 
@@ -78,7 +78,6 @@
         this.isDragging = false;
       },
       endTouching(event){
-        console.log('end touching', event);
         this.endScrolling();
       },
 

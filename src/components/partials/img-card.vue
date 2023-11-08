@@ -22,7 +22,7 @@
     watch:{
       ratio(n,o){
         if(n !== o){this.getImage()}
-        this.resetFavorite();
+        this.resetFavoriteAndUrl();
       },
       'store.download'(n,o){
         if(n !== o){
@@ -33,15 +33,45 @@
 
     methods:{
 
+      findDuplicateUrl(url){
+        // guardami dentro tutte le sezioni con lo stesso ratio
+        const sameRatioSectionsIds = [];
+          let foundDuplicate = false;
+          store.sections.forEach((section) => {
+            // trovare tutti gli ID delle sezioni con lo stesso ratio
+            if(section.ratio === this.ratio ){
+              sameRatioSectionsIds.push(section.id);
+            }
+          });
+
+          //  per ogni sezione identificata
+          for (let index = 0; index <= sameRatioSectionsIds.length - 1; index++) {
+            let section = store.allLoadedImg.find((section) => section.sectionId == sameRatioSectionsIds[index]);
+            // verifica se gia esiste l'url
+            if(section.images.includes(url)){
+              foundDuplicate = true;
+              break;
+            }
+          }
+        return foundDuplicate;
+      },
+
       getImage(){
         this.load = false;
 
         axios.get(store.rdmIBaseUrl + store.requestRatio[this.ratio - 1] + store.format)
         .then(result =>{
+          // se gia l' url immagine gia esiste rifai la chiamata
+          if(this.findDuplicateUrl(result.data.url)){
+            this.getImage();
+          }else{
             this.imgUrl = result.data.url;
-            this.license= result.data.license,
-            this.provider= result.data.provider,
+            this.license= result.data.license;
+            this.provider= result.data.provider;
+            let allLoadedImg = store.allLoadedImg.find((section) => section.sectionId == this.sectionId);
+            allLoadedImg.images.push(result.data.url);
             this.load = true;
+          }
         })
         .catch(error => { console.log(error)
           this.getImage();
@@ -58,14 +88,14 @@
         
         if(this.favorite){
           store.sections[this.SectionIndex()].images.push(this.imgUrl)
-          console.log(this.SectionIndex(), store.sections[this.SectionIndex()].images);
         }else{
           store.sections[this.SectionIndex()].images = store.sections[this.SectionIndex()].images.filter((image) => image !== this.imgUrl )
-          console.log(this.SectionIndex(), store.sections[this.SectionIndex()].images);
         }
       },
-      resetFavorite(){
+      resetFavoriteAndUrl(){
         store.sections[this.SectionIndex()].images = [];
+        let allLoadedImg = store.allLoadedImg.find((section) => section.sectionId == this.sectionId);
+        allLoadedImg.images = [];
         this.favorite = false;
       },
 
@@ -109,6 +139,7 @@
       },
     },
     mounted(){
+
       this.getImage();
     }
   }
